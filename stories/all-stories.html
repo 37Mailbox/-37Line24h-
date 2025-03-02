@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全部作品 - 37Line24h联文产出企划</title>
+    <style>
+        /* 基本样式与其他页面相同 */
+        :root {
+            --sana-color: #b388ff;
+            --mina-color: #98e5be;
+            --gradient: linear-gradient(135deg, var(--sana-color), var(--mina-color));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 导航栏样式 */
+        header {
+            background: var(--gradient);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* 目录页样式 */
+        .catalog-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 2rem;
+        }
+        
+        .catalog-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .catalog-title {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .catalog-description {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .story-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .story-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .story-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .story-header {
+            background: var(--gradient);
+            padding: 1.5rem;
+            color: white;
+        }
+        
+        .story-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .story-author {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .story-body {
+            padding: 1.5rem;
+        }
+        
+        .story-info {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .story-excerpt {
+            margin-bottom: 1.5rem;
+            color: #555;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .read-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            color: var(--sana-color);
+            border: 2px solid var(--sana-color);
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .read-btn:hover {
+            background: var(--sana-color);
+            color: white;
+        }
+        
+        /* 返回按钮 */
+        .back-btn-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="logo-icon">✉️</span>
+                <a href="../index.html" style="color: white; text-decoration: none;">37号来信</a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html#about">关于</a>
+                <a href="../index.html#event">企划日程</a>
+                <a href="../index.html#stories">作品展示</a>
+                <a href="all-stories.html">全部作品</a>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- 目录内容 -->
+    <div class="catalog-container">
+        <div class="catalog-header">
+            <h1 class="catalog-title">37Line24h全部作品</h1>
+            <p class="catalog-description">
+                2025年3月7日 00:00-24:00，每小时发布一篇作品。以下是所有参与联文的优秀作品展示。
+            </p>
+        </div>
+        
+        <div class="story-list">
+            <!-- 文章项目 -->
+            <div class="story-item" onclick="window.location.href='story1.html';">
+                <div class="story-header">
+                    <h3 class="story-title">纸玫瑰</h3>
+                    <p class="story-author">作者: 今天不是很高兴</p>
+                </div>
+                <div class="story-body">
+                    <div class="story-info">
+                    </div>
+                    <p class="story-excerpt">"以后……可以只为我折玫瑰吗？"</p>
+                    <a href="story1.html" class="read-btn" onclick="event.stopPropagation();">阅读全文</a>
+                </div>
+            </div>
+            
+            <!-- 可以添加更多文章项目 -->
+            <div class="story-item" onclick="window.location.href='story2.html';">
+                <div class="story-header">
+                    <h3 class="story-title">星空与你</h3>
+                    <p class="story-author">作者: 云中漫步</p>
+                </div>
+                <div class="story-body">
+                    <div class="story-info">
+                    </div>
+                    <p class="story-excerpt">南抬头望向星空，想起了那个约定...</p>
+                    <a href="story2.html" class="read-btn" onclick="event.stopPropagation();">阅读全文</a>
+                </div>
+            </div>
+            
+            <!-- 更多文章... -->
+        </div>
+        
+        <div class="back-btn-container">
+            <a href="../index.html" class="back-btn">返回首页</a>
+        </div>
+    </div>
+</body>
+</html>
