@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>37Line24h联文产出企划</title>
+    <style>
+        /* 全局样式 */
+        :root {
+            --sana-color: #b388ff; /* 凑崎纱夏应援色 - 马卡龙紫色 */
+            --mina-color: #98e5be; /* 名井南应援色 - 马卡龙薄荷绿 */
+            --gradient: linear-gradient(135deg, var(--sana-color), var(--mina-color));
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 顶部导航栏 */
+        header {
+            background: var(--gradient);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            height: 80vh;
+            background: url('https://via.placeholder.com/1920x1080') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.8;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: white;
+            color: #333;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* 关于37Line区域 */
+        .about {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--gradient);
+            margin: 0.5rem auto 0;
+        }
+        
+        .profiles {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .profile-card {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .profile-header {
+            height: 150px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .sana-header {
+            background-color: var(--sana-color);
+        }
+        
+        .mina-header {
+            background-color: var(--mina-color);
+        }
+        
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            position: absolute;
+            bottom: -50px;
+        }
+        
+        .profile-body {
+            padding: 60px 1.5rem 1.5rem;
+            text-align: center;
+        }
+        
+        .profile-body h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-body .role {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .profile-details {
+            list-style: none;
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+        
+        .profile-details li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-details li:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* 企划活动区域 */
+        .event {
+            background: #f0f5ff;
+            padding: 5rem 2rem;
+        }
+        
+        .event-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--gradient);
+        }
+        
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: calc(50% - 40px);
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            left: calc(50% + 40px);
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -40px;
+            clip-path: polygon(0 0, 0% 100%, 100% 50%);
+            background-color: white;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -40px;
+            clip-path: polygon(100% 0, 100% 100%, 0 50%);
+            background-color: white;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--gradient);
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.7);
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* 文章提交区域 */
+        .submit {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .submission-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--sana-color);
+            box-shadow: 0 0 0 2px rgba(179, 136, 255, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 200px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* 文章展示区域 */
+        .stories {
+            background: #f9f7ff;
+            padding: 5rem 2rem;
+        }
+        
+        .stories-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .story-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .story-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .story-header {
+            padding: 1.5rem;
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .story-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .story-author {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .story-body {
+            padding: 1.5rem;
+        }
+        
+        .story-excerpt {
+            margin-bottom: 1.5rem;
+            color: #555;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .read-more {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            color: var(--sana-color);
+            border: 2px solid var(--sana-color);
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .read-more:hover {
+            background: var(--sana-color);
+            color: white;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: #333;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--mina-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .profiles {
+                flex-direction: column;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                width: calc(100% - 60px);
+                left: 60px;
+            }
+            
+            .timeline-dot {
+                left: 30px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::before,
+            .timeline-item:nth-child(even) .timeline-content::before {
+                left: -20px;
+                clip-path: polygon(100% 0, 100% 100%, 0 50%);
+            }
+        }
+        
+        /* 特殊动画和装饰 */
+        .mascot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            z-index: 100;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .mascot:hover {
+            transform: scale(1.2);
+        }
+        
+        .dog-icon, .penguin-icon {
+            width: 100%;
+            height: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .dog-icon {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%23b388ff" d="M256 224c-79.5 0-144 64.5-144 144s64.5 144 144 144 144-64.5 144-144-64.5-144-144-144zm59.4 180.2c-5.5 5.5-14.3 5.5-19.8 0l-19.4-19.4c-5.5-5.5-5.5-14.3 0-19.8s14.3-5.5 19.8 0l19.4 19.4c5.5 5.5 5.5 14.3 0 19.8zM192 160c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64zm128 0c-35.3 0-64 28.7-64 64s28.7 64 64 64 64-28.7 64-64-28.7-64-64-64z"/></svg>');
+        }
+        
+        .penguin-icon {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%2398e5be" d="M387.9 373.7h-58.7l-43.4-84.7 43.4-68.4c2.9-4.6 2.9-10.4 0-15s-8.2-7.5-13.7-7.5h-36.9c-5.5 0-10.8 3-13.7 7.5l-61.1 96.2c-2.9 4.6-2.9 10.4 0 15l61.1 119c2.9 4.6 8.2 7.5 13.7 7.5h109.3c5.5 0 10.8-3 13.7-7.5 2.9-4.6 2.9-10.4 0-15l-43.4-84.7 43.4-26.9c4.6-2.9 7.5-8.2 7.5-13.7s-2.9-10.8-7.5-13.7l-13.7-8.2z"/></svg>');
+        }
+        
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--gradient);
+            opacity: 0.6;
+            animation: float 10s linear infinite;
+            bottom: -100px;
+            transform: scale(0.3);
+            clip-path: path('M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z');
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.3);
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-800px) rotate(360deg) scale(0.1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 浮动装饰元素 -->
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="mascot" id="mascot">
+        <div class="dog-icon" id="dog"></div>
+        <div class="penguin-icon" id="penguin" style="display: none;"></div>
+    </div>
+
+    <!-- 顶部导航栏 -->
+    <header>
+        <nav>
+            <div class="logo">
+                <span class="logo-icon">✉️</span>
+                37号来信
+            </div>
+            <div class="nav-links">
+                <a href="#about">关于</a>
+                <a href="#event">企划日程</a>
+                <a href="#submit">参与联文</a>
+                <a href="#stories">作品展示</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>37号来信</h1>
+            <p>37Line24h联文活动</p>
+            <p>2025.3.7 01:00~24:00</p>
+            <a href="#submit" class="btn">立即参与</a>
+        </div>
+    </section>
+
+    <!-- 关于37Line -->
+    <section class="about" id="about">
+        <div class="section-title">
+            <h2>关于37Line</h2>
+        </div>
+        <p> 日语数字3的音读是さん[san],训读是み(つつ)[mi (tsu)], 日语数字7的训读是なな[nana]。所以日语中大家习惯用数字对应 sa=3 na=7 sana=37 mi=3 na=7 mina=37
+因此:さなsana和みなmina的名字都可以写作数字37，两个人合称为37line。</p>
+        
+        <div class="banner-image">
+            <img src="/api/placeholder/800/400" alt="37Line宣传图" style="width: 100%; max-width: 800px; border-radius: 10px; margin: 2rem auto; display: block; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        </div>
+        
+        <p style="text-align: center; color: #555; margin-top: 2rem;">37号来信 - MISANA - 3月7号是我们的节日呢</p>
+    </section>
+
+    <!-- 企划活动 -->
+    <section class="event" id="event">
+        <div class="event-container">
+            <div class="section-title">
+                <h2>企划日程</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2月2日</span>
+                        <h3>筹备阶段</h3>
+                        <p>开始邀请文手画手参与37Line24h联文产出企划。</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2月21日</span>
+                        <h3>正式官宣</h3>
+                        <p>37Line24h联文产出企划正式对外公布，开始接受参与报名。</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">3月1日</span>
+                        <h3>作品提交与顺序抽取</h3>
+                        <p>参与者提交作品，并抽取展示顺序。</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">3月7日</span>
+                        <h3>作品正式发布</h3>
+                        <p>01:00-24:00，根据抽取顺序，每小时发布一篇作品。</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 文章提交 -->
+    <section class="submit" id="submit">
+        <div class="section-title">
+            <h2>参与联文</h2>
+        </div>
+        
+        <div class="submission-form">
+            <form id="story-form">
+                <div class="form-group">
+                    <label for="author">作者名称</label>
+                    <input type="text" class="form-control" id="author" placeholder="请输入您的昵称">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">联系邮箱</label>
+                    <input type="email" class="form-control" id="email" placeholder="请输入您的邮箱">
+                </div>
+                
+                <div class="form-group">
+                    <label for="title">作品标题</label>
+                    <input type="text" class="form-control" id="title" placeholder="请输入作品标题">
+                </div>
+                
+                <div class="form-group">
+                    <label for="summary">作品简介</label>
+                    <textarea class="form-control" id="summary" placeholder="请简要描述您的作品内容"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="content">作品内容</label>
+                    <textarea class="form-control" id="content" placeholder="请输入您的作品内容"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">提交作品</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 作品展示 -->
+    <section class="stories" id="stories">
+        <div class="stories-container">
+            <div class="section-title">
+                <h2>作品展示</h2>
+            </div>
+            
+            <div style="text-align: center; padding: 3rem 0;">
+                <p style="font-size: 1.2rem; color: #666; margin-bottom: 1.5rem;">作品将于2025年3月7日开始展示</p>
+                <p style="color: #888;">敬请期待精彩内容！</p>
+            </div>
+        </div>
+    </section>
