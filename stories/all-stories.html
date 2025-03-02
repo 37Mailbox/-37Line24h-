@@ -291,6 +291,86 @@
             height: 100%;
             z-index: 1;
         }
+        /* 移动端布局优化 - 不修改按钮样式 */
+@media (max-width: 768px) {
+    /* 标题和描述优化 */
+    .catalog-title {
+        font-size: 1.8rem;
+    }
+    
+    .catalog-description {
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+    }
+    
+    /* 导航栏优化 */
+    header {
+        padding: 0.5rem 0;
+    }
+    
+    .logo {
+        font-size: 1.4rem;
+    }
+    
+    .logo-icon {
+        font-size: 1.5rem;
+        margin-right: 5px;
+    }
+    
+    .nav-links {
+        gap: 0.8rem;
+    }
+    
+    .nav-links a {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.85rem;
+    }
+    
+    /* 内容容器优化 */
+    .catalog-container {
+        padding: 1.5rem 1rem;
+        margin: 1rem auto;
+    }
+    
+    .catalog-header {
+        margin-bottom: 2rem;
+    }
+    
+    /* 卡片布局优化 */
+    .catalog-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    /* 卡片内容优化 */
+    .story-item .catalog-header {
+        padding: 1.2rem;
+    }
+    
+    .catalog-title-small {
+        font-size: 1.2rem;
+    }
+    
+    .catalog-body {
+        padding: 1.2rem;
+    }
+    
+    .catalog-excerpt {
+        margin-bottom: 1.2rem;
+        font-size: 0.95rem;
+    }
+    
+    .catalog-btn {
+        padding: 0.4rem 0.9rem;
+        font-size: 0.9rem;
+    }
+    
+    /* 返回按钮优化 */
+    .back-btn {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
     </style>
 </head>
 <body>
