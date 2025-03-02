@@ -107,53 +107,54 @@
         }
         
         /* 分类标签 - 改进的样式 */
-        .catalog-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            gap: 1rem;
-        }
-        
-        .catalog-tab {
-            padding: 0.6rem 1.8rem;
-            background: white;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            color: #666;
-            border: 2px solid transparent;
-            transition: all 0.3s;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-        
-        .catalog-tab.active {
-            background: linear-gradient(135deg, #b388ff, #98e5be);
-            color: white;
-            box-shadow: 0 4px 8px rgba(179, 136, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* 添加光泽效果 */
-        .catalog-tab.active::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 40%;
-            background: linear-gradient(
-                to bottom,
-                rgba(255, 255, 255, 0.2),
-                rgba(255, 255, 255, 0)
-            );
-        }
-        
-        .catalog-tab:hover:not(.active) {
-            border-color: var(--sana-color);
-            color: var(--sana-color);
-            transform: translateY(-2px);
-        }
+       /* 分类标签 - 改进的样式 */
+.catalog-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+
+.catalog-tab {
+    padding: 0.6rem 1.8rem;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #666;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.catalog-tab.active {
+    background: linear-gradient(135deg, #b388ff, #98e5be);
+    color: white;
+    box-shadow: 0 4px 8px rgba(179, 136, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 添加光泽效果 */
+.catalog-tab.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0)
+    );
+}
+
+.catalog-tab:hover:not(.active) {
+    border-color: var(--sana-color);
+    color: var(--sana-color);
+    transform: translateY(-2px);
+}
         
         /* 作品网格 */
         .catalog-grid {
