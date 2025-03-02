@@ -398,28 +398,35 @@
     </div>
     
     <script>
-        // 作品过滤功能
-        function filterItems(type) {
-            // 更新标签激活状态
-            const tabs = document.querySelectorAll('.catalog-tab');
-            tabs.forEach(tab => {
-                tab.classList.remove('active');
-                if (tab.textContent.toLowerCase().includes(type) || 
-                    (type === 'all' && tab.textContent === '全部')) {
-                    tab.classList.add('active');
-                }
-            });
-            
-            // 过滤作品项目
-            const items = document.querySelectorAll('.catalog-item');
-            items.forEach(item => {
-                if (type === 'all' || item.dataset.type === type) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
+    // 改进的作品过滤功能
+function filterItems(type) {
+    console.log("正在过滤:", type); // 调试使用
+    
+    // 更新标签激活状态
+    const tabs = document.querySelectorAll('.catalog-tab');
+    tabs.forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // 根据类型找到并激活对应标签
+    if (type === 'all') {
+        tabs[0].classList.add('active');
+    } else if (type === 'story') {
+        tabs[1].classList.add('active');
+    } else if (type === 'artwork') {
+        tabs[2].classList.add('active');
+    }
+    
+    // 过滤作品项目
+    const items = document.querySelectorAll('.catalog-item');
+    items.forEach(item => {
+        if (type === 'all' || item.dataset.type === type) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
         }
+    });
+}
     </script>
 </body>
 </html>
