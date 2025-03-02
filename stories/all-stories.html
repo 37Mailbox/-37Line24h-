@@ -108,6 +108,7 @@
         
         /* 分类标签 - 改进的样式 */
        /* 分类标签 - 改进的样式 */
+/* 分类标签 - 简化样式 */
 .catalog-tabs {
     display: flex;
     justify-content: center;
@@ -122,38 +123,23 @@
     cursor: pointer;
     font-weight: bold;
     color: #666;
-    border: 2px solid transparent;
+    border: none;
     transition: all 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.catalog-tab.active {
-    background: linear-gradient(135deg, #b388ff, #98e5be);
-    color: white;
-    box-shadow: 0 4px 8px rgba(179, 136, 255, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-
-/* 添加光泽效果 */
-.catalog-tab.active::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 40%;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.2),
-        rgba(255, 255, 255, 0)
-    );
-}
-
-.catalog-tab:hover:not(.active) {
-    border-color: var(--sana-color);
-    color: var(--sana-color);
+/* 悬停效果 */
+.catalog-tab:hover {
     transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 激活状态 - 白色背景 */
+.catalog-tab.active {
+    background: white;
+    color: #666;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
         
         /* 作品网格 */
